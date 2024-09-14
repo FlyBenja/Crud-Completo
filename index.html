@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartelera de Cine</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Banner formal -->
+    <div class="banner">
+        <h1>Bienvenido a la Cartelera de Cine</h1>
+    </div>
+
+    <!-- Botón para agregar película -->
+    <div class="container mt-4 text-center">
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Agregar Película</button>
+    </div>
+
+    <!-- Contenedor de películas -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Películas Disponibles</h2>
+        <div id="peliculas-container" class="row">
+            <!-- Aquí se cargarán las películas -->
+        </div>
+    </div>
+
+    <!-- Modal para agregar película -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addModalLabel">Agregar Película</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addForm">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="addImdbID" class="form-label">ID IMDb</label>
+                                <input type="text" class="form-control" id="addImdbID" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="addEstado" class="form-label">Estado</label>
+                                <select class="form-control" id="addEstado" required>
+                                    <option value="1">Disponible</option>
+                                    <option value="0">No disponible</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="addYear" class="form-label">Año</label>
+                                <input type="text" class="form-control" id="addYear" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="addTitle" class="form-label">Título</label>
+                                <input type="text" class="form-control" id="addTitle" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="addType" class="form-label">Género</label>
+                                <input type="text" class="form-control" id="addType" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="addUbication" class="form-label">Ubicación</label>
+                                <input type="text" class="form-control" id="addUbication" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="addPoster" class="form-label">Poster</label>
+                                <input type="text" class="form-control" id="addPoster" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="addDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="addDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Agregar Película</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar película -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Editar Película</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <input type="hidden" id="editImdbID">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="editEstado" class="form-label">Estado</label>
+                                <select class="form-control" id="editEstado" required>
+                                    <option value="1">Disponible</option>
+                                    <option value="0">No disponible</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="editYear" class="form-label">Año</label>
+                                <input type="text" class="form-control" id="editYear" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editTitle" class="form-label">Título</label>
+                                <input type="text" class="form-control" id="editTitle" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editType" class="form-label">Género</label>
+                                <input type="text" class="form-control" id="editType" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editUbication" class="form-label">Ubicación</label>
+                                <input type="text" class="form-control" id="editUbication" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editPoster" class="form-label">Poster</label>
+                                <input type="text" class="form-control" id="editPoster" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="editDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+</html>
