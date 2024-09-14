@@ -22,32 +22,42 @@ body {
 }
 
 .card {
+    width: 300px; /* Fijamos un ancho */
+    height: 450px; /* Ajustamos la altura para que los botones entren sin desbordar */
     margin: 10px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     text-decoration: none;
+    display: inline-block; /* Para que las tarjetas se alineen en una fila */
+    vertical-align: top; /* Alinea verticalmente las tarjetas */
+    position: relative; /* Para controlar el posicionamiento de los botones */
 }
 
 .card img {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
+    height: 60%; /* Las imágenes ocuparán el 60% de la tarjeta */
+    object-fit: cover; /* Asegura que las imágenes mantengan la proporción */
 }
 
 .card-body {
     padding: 15px;
     text-align: center;
+    height: 40%; /* La descripción ocupará el 40% restante */
 }
 
-.btn-primary, .btn-danger {
-    border: none;
-    padding: 10px 20px;
-    margin-top: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    color: #fff;
+.d-flex {
+    position: absolute;
+    bottom: 10px; /* Los botones estarán en la parte inferior de la tarjeta */
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.btn {
+    width: 48%; /* Los botones ocuparán la mitad del espacio cada uno */
+    font-size: 0.9rem;
+    padding: 10px;
 }
 
 .btn-primary {
@@ -76,4 +86,3 @@ body {
     transform: scale(1.03);
     transition: transform 0.3s ease-in-out;
 }
-    
